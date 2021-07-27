@@ -1,5 +1,9 @@
 # Project REST-Rant
 
+* add comments
+* give comments a authorId
+* add founded year
+
 REST-Rant is an app where users can review restaurants.
 
 

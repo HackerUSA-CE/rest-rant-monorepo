@@ -30,7 +30,7 @@ function NewPlaceForm() {
 	return (
 		<main>
 			<h1>Add a New Place</h1>
-			<form method="POST" action="/places" onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<div className="form-group">
 					<label htmlFor="name">Place Name</label>
 					<input

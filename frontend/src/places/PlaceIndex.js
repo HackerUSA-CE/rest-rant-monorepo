@@ -15,16 +15,16 @@ function PlaceIndex(data) {
 
 	let placesFormatted = places.map((place) => {
 		return (
-			<div className="col-sm-6" key={place.id}>
+			<div className="col-sm-6" key={place.placeId}>
 				<h2>
-					<a href={`/places/${place.id}`} >
+					<a href={`/places/${place.placeId}`} >
 						{place.name}
 					</a>
 				</h2>
 				<p className="text-center">
 					{place.cuisines}
 				</p>
-				<img style={{ width: '75%' }} src={place.pic} alt={place.name} />
+				<img style={{ maxWidth: 200 }} src={place.pic} alt={place.name} />
 				<p className="text-center">
 					Located in {place.city}, {place.state}
 				</p>

@@ -1,27 +1,27 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('places', {
-      place_id: {
+    await queryInterface.createTable('comments', {
+      comment_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      place_id: {
+        type: Sequelize.SMALLINT
+      },
+      stars: {
+        type: Sequelize.SMALLINT
+      },
+      content: {
         type: Sequelize.STRING
       },
-      city: {
-        type: Sequelize.STRING
+      rant: {
+        type: Sequelize.BOOLEAN
       },
-      state: {
-        type: Sequelize.STRING
-      },
-      cuisines: {
-        type: Sequelize.STRING
-      },
-      pic: {
-        type: Sequelize.STRING
+      author_id: {
+        type: Sequelize.SMALLINT
       },
       created_at: {
         allowNull: false,
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('places');
+    await queryInterface.dropTable('comments');
   }
 };

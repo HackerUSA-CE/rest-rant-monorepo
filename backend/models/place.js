@@ -2,19 +2,23 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  
+
   class Place extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+
+
+    static associate({ Comment }) {
+      Place.hasMany(Comment, { foreignKey: 'place_id', as: 'comments' })
     }
+
   };
 
   Place.init({
+    placeId: {
+      type: DataTypes.SMALLINT,
+      primaryKey: true,
+      autoIncrement: true
+
+    },
     name: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
@@ -22,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     pic: DataTypes.STRING
   }, {
     sequelize,
+    underscored: true,
     modelName: 'Place',
   });
   return Place;
