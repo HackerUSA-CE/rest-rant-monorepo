@@ -7,10 +7,11 @@ import Error404 from './Error404'
 import NewPlaceForm from './places/NewPlaceForm'
 import EditPlaceForm from './places/EditPlaceForm'
 import SignUpForm from './users/SignUpForm'
+import CurrentUserProvider from './contexts/CurrentUser'
 
 function App() {
   return (
-    <>
+    <CurrentUserProvider>
       <BrowserRouter>
         <Navigation />
         <Switch>
@@ -23,7 +24,7 @@ function App() {
           <Route path="/" component={Error404} />
         </Switch>
       </BrowserRouter>
-    </>
+    </CurrentUserProvider>
   );
 }
 
