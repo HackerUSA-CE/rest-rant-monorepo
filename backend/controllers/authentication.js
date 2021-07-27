@@ -18,13 +18,9 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/profile', async (req,res) => {
 
-    let user = await User.findOne({
-        where: { userId: req.session.userId }
-    })
-
-    res.json(user)
+router.get('/profile', (req, res) => {
+    res.send(req.currentUser)
 })
 
 module.exports = router
