@@ -24,7 +24,7 @@ function PlaceDetails() {
 		return <h1>Loading</h1>
 	}
 
-	function editPlace(){
+	function editPlace() {
 		history.push(`/places/${place.placeId}/edit`)
 	}
 
@@ -43,7 +43,7 @@ function PlaceDetails() {
 		setPlace({
 			...place,
 			comments: place.comments
-				.filter( comment => comment.commentId !== deletedComment.commentId)
+				.filter(comment => comment.commentId !== deletedComment.commentId)
 		})
 	}
 
@@ -100,7 +100,7 @@ function PlaceDetails() {
 			)
 		})
 	}
-	
+
 
 	return (
 		<main>
@@ -122,10 +122,10 @@ function PlaceDetails() {
 						Description
 					</h2>
 					<h3>
-						{/* {place.showEstablished()} */}
+						{place.name} has been serving {place.city}, {place.state} since {place.founded}.
 					</h3>
 					<h4>
-						Serving {place.cuisines}
+						Serving {place.cuisines}.
 					</h4>
 					<br />
 					<a className="btn btn-warning" onClick={editPlace}>

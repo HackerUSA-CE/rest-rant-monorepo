@@ -43,6 +43,17 @@ function NewPlaceForm() {
 					/>
 				</div>
 				<div className="form-group">
+					<label htmlFor="founded">Year Founded</label>
+					<input
+						required
+						value={place.founded}
+						onChange={e => setPlace({ ...place, founded: e.target.value })}
+						className="form-control"
+						id="founded"
+						name="founded"
+					/>
+				</div>
+				<div className="form-group">
 					<label htmlFor="pic">Place Picture</label>
 					<input
 						value={place.pic}
