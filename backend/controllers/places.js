@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db = require("../models")
 
-const { Place, Comment } = db
+const { Place, Comment, User } = db
 
 router.post('/', async (req, res) => {
     if (!req.body.pic) {
@@ -31,7 +31,10 @@ router.get('/:placeId', async (req, res) => {
     } else {
         const place = await Place.findOne({
             where: { placeId: placeId },
-            include: 'comments'
+            include: {
+                association: 'comments',
+                include: 'author'
+            }
         })
         if (!place) {
             res.status(404).json({ message: `Could not find place with id "${placeId}"` })
@@ -41,6 +44,23 @@ router.get('/:placeId', async (req, res) => {
     }
 })
 
+router.put('/:placeId', async (req, res) => {
+    let placeId = Number(req.params.placeId)
+    if (isNaN(placeId)) {
+        res.status(404).json({ message: `Invalid id "${placeId}"` })
+    } else {
+        const place = await Place.findOne({
+            where: { placeId: placeId },
+        })
+        if (!place) {
+            res.status(404).json({ message: `Could not find place with id "${placeId}"` })
+        } else {
+            Object.assign(place, req.body)
+            await place.save()
+            res.json(place)
+        }
+    }
+})
 
 router.delete('/:placeId', async (req, res) => {
     let placeId = Number(req.params.placeId)
@@ -69,8 +89,17 @@ router.post('/:placeId/comments', async (req, res) => {
     const place = await Place.findOne({
         where: { placeId: placeId }
     })
+
     if (!place) {
         res.status(404).json({ message: `Could not find place with id "${placeId}"` })
+    }
+
+    const author = await User.findOne({
+        where: { userId: req.body.authorId }
+    })
+
+    if (!author) {
+        res.status(404).json({ message: `Could not find author with id "${req.body.authorId}"` })
     }
 
     const comment = await Comment.create({
@@ -78,7 +107,10 @@ router.post('/:placeId/comments', async (req, res) => {
         placeId: placeId
     })
 
-    res.send(comment)
+    res.send({
+        ...comment.toJSON(),
+        author
+    })
 })
 
 router.delete('/:placeId/comments/:commentId', async (req, res) => {

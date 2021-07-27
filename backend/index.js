@@ -19,4 +19,6 @@ app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
 
 // Listen for Connections
-app.listen(5000)
+app.listen(process.env.PORT, () => {
+    console.log(`Listening on ${process.env.PORT}`)
+})

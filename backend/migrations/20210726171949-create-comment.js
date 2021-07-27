@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.SMALLINT
       },
       stars: {
-        type: Sequelize.SMALLINT
+        type: Sequelize.FLOAT
       },
       content: {
         type: Sequelize.STRING

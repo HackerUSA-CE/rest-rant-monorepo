@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     placeId: DataTypes.SMALLINT,
     authorId: DataTypes.SMALLINT,
     content: DataTypes.STRING,
-    stars: DataTypes.SMALLINT,
+    stars: DataTypes.FLOAT,
     rant: DataTypes.BOOLEAN
   }, {
     sequelize,
