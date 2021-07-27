@@ -3,33 +3,38 @@ import { useHistory } from "react-router"
 
 function NewCommentForm({ place, onSubmit }) {
 
-    const history = useHistory()
-
     const [authors, setAuthors] = useState([])
 
     const [comment, setComment] = useState({
         content: '',
         stars: 3,
         rant: false,
-        authorId: null
+        authorId: ''
     })
 
     useEffect(() => {
-		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/users`)
-			const resData = await response.json()
-			setAuthors(resData)
-		}
-		fetchData()
-	}, [])
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5000/users`)
+            const users = await response.json()
+            setComment({ ...comment, authorId: users[0]?.userId})
+            setAuthors(users)
+        }
+        fetchData()
+    }, [])
 
     let authorOptions = authors.map(author => {
-        return <option value={author.id}>{author.firstName} {author.lastName}</option>
+        return <option key={author.userId} value={author.userId}>{author.firstName} {author.lastName}</option>
     })
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
         onSubmit(comment)
+        setComment({
+            content: '',
+            stars: 3,
+            rant: false,
+            authorId: authors[0]?.userId
+        })
     }
 
     return (
@@ -40,7 +45,7 @@ function NewCommentForm({ place, onSubmit }) {
                     <textarea
                         required
                         value={comment.content}
-                        onChange={e => setComment({ ...place, content: e.target.value })}
+                        onChange={e => setComment({ ...comment, content: e.target.value })}
                         className="form-control"
                         id="content"
                         name="content"
@@ -50,7 +55,7 @@ function NewCommentForm({ place, onSubmit }) {
             <div className="row">
                 <div className="form-group col-sm-4">
                     <label htmlFor="state">Author</label>
-                    <select className="form-control" value={place.authorId} onChange={e => setComment({ ...comment, authorId: e.target.value })}>
+                    <select className="form-control" value={comment.authorId} onChange={e => setComment({ ...comment, authorId: e.target.value })}>
                         {authorOptions}
                     </select>
                 </div>

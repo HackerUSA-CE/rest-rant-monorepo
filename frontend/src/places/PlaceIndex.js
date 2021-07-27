@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 function PlaceIndex(data) {
 
+	const history = useHistory()
+	
 	const [places, setPlaces] = useState([])
 
 	useEffect(() => {
@@ -17,7 +20,7 @@ function PlaceIndex(data) {
 		return (
 			<div className="col-sm-6" key={place.placeId}>
 				<h2>
-					<a href={`/places/${place.placeId}`} >
+					<a href="#" onClick={() => history.push(`/places/${place.placeId}`)} >
 						{place.name}
 					</a>
 				</h2>

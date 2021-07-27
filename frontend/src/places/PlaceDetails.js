@@ -5,7 +5,7 @@ import NewCommentForm from "./NewCommentForm";
 
 function PlaceDetails() {
 
-	const { id } = useParams()
+	const { placeId } = useParams()
 
 	const history = useHistory()
 
@@ -13,15 +13,19 @@ function PlaceDetails() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/places/${id}`)
+			const response = await fetch(`http://localhost:5000/places/${placeId}`)
 			const resData = await response.json()
 			setPlace(resData)
 		}
 		fetchData()
-	}, [id])
+	}, [placeId])
 
 	if (place === null) {
 		return <h1>Loading</h1>
+	}
+
+	function editPlace(){
+		history.push(`/places/${place.placeId}/edit`)
 	}
 
 	async function deletePlace() {
@@ -44,7 +48,6 @@ function PlaceDetails() {
 	}
 
 	async function createComment(commentAttributes) {
-
 		const response = await fetch(`http://localhost:5000/places/${place.placeId}/comments`, {
 			method: 'POST',
 			headers: {
@@ -64,6 +67,8 @@ function PlaceDetails() {
 		})
 
 	}
+
+
 
 	let comments = (
 		<h3 className="inactive">
@@ -91,11 +96,10 @@ function PlaceDetails() {
 		)
 		comments = place.comments.map(comment => {
 			return (
-				<CommentCard comment={comment} onDelete={() => deleteComment(comment)} />
+				<CommentCard key={comment.commentId} comment={comment} onDelete={() => deleteComment(comment)} />
 			)
 		})
 	}
-
 	
 
 	return (
@@ -124,7 +128,7 @@ function PlaceDetails() {
 						Serving {place.cuisines}
 					</h4>
 					<br />
-					<a href={`/places/${place.id}/edit`} className="btn btn-warning">
+					<a className="btn btn-warning" onClick={editPlace}>
 						Edit
 					</a>{` `}
 					<button type="submit" className="btn btn-danger" onClick={deletePlace}>
