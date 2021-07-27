@@ -15,12 +15,12 @@ router.post('/', async (req, res) => {
         res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
         const result = await jwt.encode('asdljasldkfjs', { id: user.userId })
-        res.json({ success: true, id: user.userId, token: result.value })
+        res.json({ user: user, token: result.value })
     }
 })
 
 router.get('/profile', (req, res) => {
-    res.send(req.currentUser)
+    res.json(req.currentUser)
 })
 
 module.exports = router
