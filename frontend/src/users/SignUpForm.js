@@ -53,16 +53,18 @@ function SignUpForm() {
 						/>
 					</div>
 				</div>
-				<div className="col-sm-6 form-group">
-					<label htmlFor="email">Email</label>
-					<input
-						required
-						value={user.email}
-						onChange={e => setUser({ ...user, email: e.target.value })}
-						className="form-control"
-						id="email"
-						name="email"
-					/>
+				<div className="row">
+					<div className="col-sm-6 form-group">
+						<label htmlFor="email">Email</label>
+						<input
+							required
+							value={user.email}
+							onChange={e => setUser({ ...user, email: e.target.value })}
+							className="form-control"
+							id="email"
+							name="email"
+						/>
+					</div>
 				</div>
 				<input className="btn btn-primary" type="submit" value="Sign Up" />
 			</form>
