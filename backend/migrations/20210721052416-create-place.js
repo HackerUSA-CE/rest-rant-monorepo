@@ -23,6 +23,9 @@ module.exports = {
       pic: {
         type: Sequelize.STRING
       },
+      founded: {
+        type: Sequelize.INTEGER,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
