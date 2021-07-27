@@ -19,5 +19,8 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.get('/profile', (req, res) => {
+    res.send(req.currentUser)
+})
 
 module.exports = router
