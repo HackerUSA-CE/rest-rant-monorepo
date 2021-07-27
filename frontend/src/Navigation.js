@@ -27,6 +27,11 @@ function Navigation() {
                         Sign Up
                     </a>
                 </li>
+                <li>
+                    <a href="#" onClick={() => history.push("/login")}>
+                        Login
+                    </a>
+                </li>
             </ul>
         </nav>
     )
