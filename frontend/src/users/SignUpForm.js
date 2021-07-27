@@ -8,7 +8,8 @@ function SignUpForm() {
 	const [user, setUser] = useState({
 		firstName: '',
 		lastName: '',
-		email: ''
+		email: '',
+		password: ''
 	})
 
 	async function handleSubmit(e) {
@@ -55,14 +56,15 @@ function SignUpForm() {
 				</div>
 				<div className="row">
 					<div className="col-sm-6 form-group">
-						<label htmlFor="email">Email</label>
+						<label htmlFor="password">Password</label>
 						<input
+							type="password"
 							required
-							value={user.email}
-							onChange={e => setUser({ ...user, email: e.target.value })}
+							value={user.password}
+							onChange={e => setUser({ ...user, password: e.target.value })}
 							className="form-control"
-							id="email"
-							name="email"
+							id="password"
+							name="password"
 						/>
 					</div>
 				</div>
