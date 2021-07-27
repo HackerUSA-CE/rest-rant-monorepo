@@ -7,7 +7,7 @@ import Error404 from './Error404'
 import NewPlaceForm from './places/NewPlaceForm'
 import EditPlaceForm from './places/EditPlaceForm'
 import SignUpForm from './users/SignUpForm'
-import LoginForm from './users/Login'
+import LoginForm from './users/LoginForm'
 import CurrentUserProvider from './contexts/CurrentUser'
 
 function App() {
