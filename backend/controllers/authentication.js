@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
         const [method, token] = req.headers.authorization.split(' ')
         if (method == 'Bearer') {
@@ -30,9 +30,8 @@ router.get('/profile', (req, res) => {
                     userId: id
                 }
             })
-            res.json(req.currentUser)
+            res.json(user)
         }
-        next()
     } catch (err) {
         res.json(null)
     }
