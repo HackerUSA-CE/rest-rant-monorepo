@@ -20,7 +20,21 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/profile', async (req, res) => {
-    res.send(req.currentUser)
+    try {
+        const [method, token] = req.headers.authorization.split(' ')
+        if (method == 'Bearer') {
+            const result = await jwt.decode('asdljasldkfjs', token)
+            const { id } = result.value
+            let user = await User.findOne({
+                where: {
+                    userId: id
+                }
+            })
+            res.json(user)
+        }
+    } catch (err) {
+        res.json(null)
+    }
 })
 
 module.exports = router
