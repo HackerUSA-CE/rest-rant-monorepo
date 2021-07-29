@@ -24,6 +24,18 @@ function LoginForm() {
             },
             body: JSON.stringify(credentials)
         })
+<<<<<<< HEAD
+=======
+
+        const data = await response.json()
+
+        if (response.status === 200) {
+            setCurrentUser(data.user)
+            history.push(`/`)
+        } else {
+            setErrorMessage(data.message)
+        }
+>>>>>>> 9.3.4-solution
 
         const data = await response.json()
 
