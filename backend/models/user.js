@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Comment }) {
       User.hasMany(Comment, { as: 'author', foreignKey: 'author_id' })
     }
-
-  };
+  
   User.init({
     userId: {
       type: DataTypes.SMALLINT,
@@ -17,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
 
     },
+
+    {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING
-  }, {
-    sequelize,
-    underscored: true,
-    modelName: 'User',
-  });
-  return User;
-};
+    email: DataTypes.STRING,
+    passwordDigest: DataTypes.STRING
+},
+  
+  })
+  
