@@ -8,14 +8,17 @@ const jwt = require('json-web-token')
 // router.post('/', async (req, res) => {
 //     console.log('IN HERE')
 // })
-   
+
+
+const { User } = db
+  
 router.post('/', async (req, res) => {
-   
+
     let user = await User.findOne({
-        where: { 
-            userId: req.session.userId
-        }
+        where: { email: req.body.email }
     })
+
+    console.log(user)
 
     if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({

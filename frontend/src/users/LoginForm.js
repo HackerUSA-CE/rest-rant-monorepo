@@ -17,9 +17,10 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState(null)
          
     async function handleSubmit(e) {
+        e.preventDefault()
         const response = await fetch(`http://localhost:5000/authentication/`, {
             method: 'POST',
-            credentials: 'include',
+            // // credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -32,16 +33,18 @@ function LoginForm() {
         console.log("error: ", err);
     });
     
-//     const data = await response.json()
+    const data = await response.json()
 
-//     if (response.status === 200) {
-//         setCurrentUser(data.user)
-//         console.log(data.token)
-//         history.push(`/`)
+    
+
+    if (response.status === 200) {
+        setCurrentUser(data.user)
+        console.log(data.token)
+        history.push(`/`)
         
-//     } else {
-//         setErrorMessage(data.message)
-//     }
+    } else {
+        setErrorMessage(data.message)
+    }
 }
 
     return (
