@@ -9,9 +9,7 @@ export const CurrentUser = createContext()
             useEffect(() => {
         
                 const getLoggedInUser = async () => {
-                    let response = await fetch('http://localhost:3000/authentication/profile/', {
-                        credentials: 'include'
-                    })
+                    let response = await fetch('http://localhost:3000/authentication/profile/')
                     let user = await response.json()
                     setCurrentUser(user)
                 }

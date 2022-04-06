@@ -25,16 +25,23 @@ function LoginForm() {
             },
             body: JSON.stringify(credentials)
         })
+    .then(res => {
+        console.log("response: ", res)
+    })
+    .catch(err => {
+        console.log("error: ", err);
+    });
     
-    const data = await response.json()
+//     const data = await response.json()
 
-    if (response.status === 200) {
-        setCurrentUser(data.user)
-        history.push(`/`)
+//     if (response.status === 200) {
+//         setCurrentUser(data.user)
+//         console.log(data.token)
+//         history.push(`/`)
         
-    } else {
-        setErrorMessage(data.message)
-    }
+//     } else {
+//         setErrorMessage(data.message)
+//     }
 }
 
     return (
