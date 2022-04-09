@@ -29,10 +29,10 @@ router.get('/', async (req, res) => {
 
 
 router.get('/:placeId', async (req, res) => {
-    {
-        if(req.currentUser?.role !== 'admin'){
-            return res.status(403).json({ message: 'You are not allowed to edit places'})
-        }
+    
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to edit places'})
+       
     }
     let placeId = Number(req.params.placeId)
     if (isNaN(placeId)) {
