@@ -1,12 +1,9 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useHistory } from "react-router"
-import { CurrentUser } from "../contexts/CurrentUser"
 
 function LoginForm() {
 
     const history = useHistory()
-
-    const { setCurrentUser } = useContext(CurrentUser)
 
     const [credentials, setCredentials] = useState({
         email: '',
@@ -17,7 +14,22 @@ function LoginForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
-       
+        const response = await fetch(`http://localhost:5000/authentication/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+
+        const data = await response.json()
+
+        if (response.status === 200) {
+            //setCurrentUser(data.user)
+            history.push(`/`)
+        } else {
+            setErrorMessage(data.message)
+        }
 
     }
 
@@ -26,7 +38,7 @@ function LoginForm() {
             <h1>Login</h1>
             {errorMessage !== null
                 ? (
-                    <div className="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         {errorMessage}
                     </div>
                 )
@@ -65,4 +77,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm
+export default LoginForm 
