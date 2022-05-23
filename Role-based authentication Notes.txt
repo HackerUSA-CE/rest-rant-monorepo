@@ -1,0 +1,80 @@
+  //Notes/code from the assignment on Canvas (Placed in repo for future reference)
+
+const { Place, Comment, User } = db
+
+router.post('/', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to add a place'})
+    }
+  
+    
+
+router.put('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to edit places'})
+    }
+      
+
+router.delete('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to delete places'})
+    }
+  
+
+src/navigation.js
+
+  
+
+if (currentUser) {
+    loginActions = (
+        <li style={{ float: 'right' }}>
+            Logged in as {currentUser.firstName} {currentUser.lastName}
+        </li>
+    )
+}
+
+		{addPlaceButton}
+            {loginActions}
+        </ul>
+    </nav>
+
+
+src/places/PlaceDetails.js
+
+  
+    comments = place.comments.map(comment => {
+        return (
+            <CommentCard 
+                key={comment.commentId} 
+                comment={comment} 
+                onDelete={() => deleteComment(comment)} 
+            />
+        )
+    })
+}
+
+let placeActions = null
+
+if (currentUser?.role === 'admin') {
+    placeActions = (
+        <>
+            <a className="btn btn-warning" onClick={editPlace}>
+                Edit
+            </a>
+            <button type="submit" className="btn btn-danger" onClick={deletePlace}>
+                Delete
+            </button>
+        </>
+    )
+}
+
+return (
+    <main>
+        <div className="row">
+              
+                    Serving {place.cuisines}.
+                </h4>
+                <br />
+                {placeActions}
+            </div>
+        </div>

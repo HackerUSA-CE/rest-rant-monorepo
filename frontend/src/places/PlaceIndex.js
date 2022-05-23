@@ -14,7 +14,7 @@ function PlaceIndex(data) {
 			setPlaces(resData)
 		}
 		fetchData()
-	}, [])
+	},[])
 
 	let placesFormatted = places.map((place) => {
 		return (
