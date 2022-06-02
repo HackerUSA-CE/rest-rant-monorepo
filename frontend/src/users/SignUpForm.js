@@ -70,6 +70,7 @@ function SignUpForm() {
 					<div className="col-sm-6 form-group">
 						<label htmlFor="password">Password</label>
 						<input
+<<<<<<< HEAD
 						type="password"
 						required
 						value={user.password}
@@ -77,6 +78,15 @@ function SignUpForm() {
 						className="form-control"
 						id="password"
 						name="password"
+=======
+							type="password"
+							required
+							value={user.password}
+							onChange={e => setUser({ ...user, password: e.target.value })}
+							className="form-control"
+							id="password"
+							name="password"
+>>>>>>> origin/9.3.10-solution-jwt
 						/>
 					</div>
 				</div>
