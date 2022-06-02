@@ -20,11 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-<<<<<<< HEAD
-    passwordDigest: DataTypes.STRING,
-=======
     passwordDigest: DataTypes.STRING
->>>>>>> origin/9.3.10-solution-jwt
   }, {
     sequelize,
     underscored: true,

@@ -19,11 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
-<<<<<<< HEAD
-app.use('/authenticate', require('./controllers/authenticate'))
-=======
 app.use('/authentication', require('./controllers/authentication'))
->>>>>>> origin/9.3.10-solution-jwt
 
 // Listen for Connections
 app.listen(process.env.PORT, () => {

@@ -7,7 +7,7 @@ async function defineCurrentUser(req, res, next){
     try {
         const [ method, token ] = req.headers.authorization.split(' ')
         if(method == 'Bearer'){
-            const result = await jwt.decode('asdljasldkfjs', token)
+            const result = await jwt.decode(process.env.JWT_SECRET, token)
             const { id } = result.value
             let user = await User.findOne({ 
                 where: {

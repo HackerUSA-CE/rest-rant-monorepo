@@ -18,29 +18,13 @@ function LoginForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
-<<<<<<< HEAD
-        const response = await fetch(`http://localhost:5000/authenticate/`, {
-=======
         const response = await fetch(`http://localhost:5000/authentication/`, {
->>>>>>> origin/9.3.10-solution-jwt
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(credentials)
         })
-<<<<<<< HEAD
-
-        const data = await response.json()
-
-        if (response.status === 200) {
-            setCurrentUser(data.user)
-            history.push(`/`)
-        } else {
-            setErrorMessage(data.message)
-        }
-=======
->>>>>>> origin/9.3.10-solution-jwt
 
         const data = await response.json()
 
