@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
-
+app.user ('/auth', require('./controllers/auth'))
 // Listen for Connections
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`)
