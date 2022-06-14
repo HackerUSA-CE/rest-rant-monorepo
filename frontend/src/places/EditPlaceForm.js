@@ -17,7 +17,7 @@ function EditPlaceForm() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5000/places/${placeId}`)
+			const response = await fetch(`http://localhost:5001/places/${placeId}`)
 			const resData = await response.json()
 			setPlace(resData)
 		}
@@ -27,7 +27,7 @@ function EditPlaceForm() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/places/${place.placeId}`, {
+		await fetch(`http://localhost:5001/places/${place.placeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
