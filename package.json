@@ -1,0 +1,20 @@
+{
+  "name": "rest-rant-monorepo",
+  "version": "1.0.0",
+  "description": "REST-Rant is an app where users can review restaurants.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgchamplin/rest-rant-monorepo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgchamplin/rest-rant-monorepo/issues"
+  },
+  "homepage": "https://github.com/mgchamplin/rest-rant-monorepo#readme"
+}
