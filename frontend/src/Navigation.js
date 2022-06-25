@@ -11,13 +11,13 @@ function Navigation() {
     let loginActions = (
         <>
             <li style={{ float: 'right' }}>
-                {/* Changed href from # to avoid warning */}
+                {/* Changed href from # to avoid warning   xx*/}
                 <a href="/sign-up" onClick={() => history.push("/sign-up")}>
                     Sign Up
                 </a>
             </li>
             <li style={{ float: 'right' }}>
-                {/* Changed href from # to avoid warning */}
+                {/* Changed href from # to avoid warning   */}
                 <a href="/login" onClick={() => history.push("/login")}>
                     Login
                 </a>
