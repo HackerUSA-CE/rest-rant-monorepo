@@ -4,6 +4,7 @@ const db = require("../models")
 const { Place, Comment, User } = db
 
 router.post('/', async (req, res) => {
+
     if (!req.body.pic) {
         req.body.pic = 'http://placekitten.com/400/400'
     }
@@ -19,6 +20,7 @@ router.post('/', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
+    console.log(res)
     const places = await Place.findAll()
     res.json(places)
 })

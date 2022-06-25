@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    password_digest: {
+      allowNull: false,
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
     underscored: true,
