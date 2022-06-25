@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useHistory } from "react-router"
+//import { useHistory } from "react-router"
 
 function NewCommentForm({ place, onSubmit }) {
 
@@ -20,7 +20,8 @@ function NewCommentForm({ place, onSubmit }) {
             setAuthors(users)
         }
         fetchData()
-    }, [])
+    })
+    //}, [])  // Compiler warning.  Commented this out and replaced with the above linke
 
     let authorOptions = authors.map(author => {
         return <option key={author.userId} value={author.userId}>{author.firstName} {author.lastName}</option>

@@ -17,6 +17,8 @@ function LoginForm() {
 
       
     async function handleSubmit(e) {
+        e.preventDefault()
+
         const response = await fetch(`http://localhost:5000/authentication/`, {
             method: 'POST',
             headers: {
@@ -35,7 +37,7 @@ function LoginForm() {
                 firstName: 'Michael',
                 lastName: 'Champolan'
             })*/
-            //history.push(`/`)
+            history.push(`/`)
         } else {
             console.log("USER LOGIN FAIL")
             setErrorMessage(data.message)
