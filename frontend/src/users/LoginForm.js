@@ -24,9 +24,6 @@ function LoginForm() {
       body: JSON.stringify(credentials),
     });
 
-<<<<<<< HEAD
-    const data = await response.json();
-=======
     async function handleSubmit(e) {
         e.preventDefault()
         const response = await fetch(`http://localhost:5000/authentication/`, {
@@ -45,7 +42,6 @@ function LoginForm() {
         } else {
             setErrorMessage(data.message)
         }
->>>>>>> origin/9.3.4-solution
 
     console.log(data);
   }

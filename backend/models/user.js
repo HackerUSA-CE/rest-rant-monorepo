@@ -18,23 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       passwordDigest: DataTypes.STRING,
     },
-<<<<<<< HEAD
     {
       sequelize,
       underscored: true,
       modelName: "User",
     }
   );
-=======
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    passwordDigest: DataTypes.STRING
-  }, {
-    sequelize,
-    underscored: true,
-    modelName: 'User',
-  });
->>>>>>> origin/9.3.4-solution
   return User;
 };
