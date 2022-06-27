@@ -15,9 +15,15 @@ app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 app.use("/places", require("./controllers/places"));
 app.use("/users", require("./controllers/users"));
 app.use("/authentication", require("./controllers/authentication"));
+=======
+app.use('/places', require('./controllers/places'))
+app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
+>>>>>>> origin/9.3.4-solution
 
 // Listen for Connections
 app.listen(process.env.PORT, () => {
