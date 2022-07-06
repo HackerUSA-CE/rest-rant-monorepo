@@ -1,3 +1,4 @@
+
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
@@ -13,8 +14,14 @@ router.post('/', async (req, res) => {
     if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
+        req.session.userId = user.userId
         res.json({ user })
     }
+})
+
+
+router.get('/profile', async (req, res) => {
+    res.json(req.currentUser)
 })
 
 module.exports = router
