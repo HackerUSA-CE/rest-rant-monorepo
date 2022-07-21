@@ -18,7 +18,7 @@ Next, `cd` into `frontend`, and run `npm install` to install dependencies for th
 
 Finally, in separate terminals, run `npm start` in each folder so that the API and React app are running at the same time.
 
-### API (http://localhost:5000)
+### API (http://)
 | Method | Path                                 | Purpose                                   |
 | ------ | ------------------------------------ | ----------------------------------------- |
 | GET    | /                                    | Home page                                 |
