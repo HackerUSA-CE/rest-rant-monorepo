@@ -15,7 +15,7 @@ function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState(null)
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e:any) {
         e.preventDefault()
        
 
