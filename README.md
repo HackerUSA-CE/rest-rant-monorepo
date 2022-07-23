@@ -1,6 +1,11 @@
 # Project REST-Rant
 REST-Rant is an app where users can review restaurants.
 
+1.Turning project into type script
+2. debugging the code. 
+3. Launching the code.
+4. Review the project changes
+
 ### Setup
 First, you'll need a Postgres database to connect to. Follow instructions here to setup the database and save credentials for the next step.
 
@@ -18,7 +23,7 @@ Next, `cd` into `frontend`, and run `npm install` to install dependencies for th
 
 Finally, in separate terminals, run `npm start` in each folder so that the API and React app are running at the same time.
 
-### API (http://localhost:5000)
+### API (http://)
 | Method | Path                                 | Purpose                                   |
 | ------ | ------------------------------------ | ----------------------------------------- |
 | GET    | /                                    | Home page                                 |
