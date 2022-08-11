@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
+// const PORT = process.env.PORT || 5000;
 
 // Express Settings
 app.use(cors())
@@ -22,3 +23,5 @@ app.use('/users', require('./controllers/users'))
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`)
 })
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
