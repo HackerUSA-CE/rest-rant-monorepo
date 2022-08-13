@@ -16,7 +16,7 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState(null)
 
     async function handleSubmit(e) {
-        const response = await fetch(`http://localhost:5000/authentication/`, {
+        const response = await fetch(`http://localhost:5050/authentication/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
