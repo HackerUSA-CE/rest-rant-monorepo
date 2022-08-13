@@ -19,6 +19,7 @@ function LoginForm() {
         e.preventDefault()
         const response = await fetch(`http://localhost:5000/authentication/`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -33,7 +34,6 @@ function LoginForm() {
         } else {
             setErrorMessage(data.message)
         }
-
     }
 
     return (
