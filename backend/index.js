@@ -11,6 +11,7 @@ const cookieSession = require('cookie-session')
 app.use(cookieSession({
     name: 'session',
     keys: [ process.env.SESSION_SECRET ],
+    sameSite: 'strict',
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
     app.use(cors({
