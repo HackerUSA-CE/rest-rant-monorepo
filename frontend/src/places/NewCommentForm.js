@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { CurrentUser } from '../contexts/CurrentUser'
 
 function NewCommentForm({ place, onSubmit }) {
+    
     const {currentUser} = useContext(CurrentUser)
 
     const [comment, setComment] = useState({
