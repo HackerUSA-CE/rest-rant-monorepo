@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { CurrentUser } from '../contexts/CurrentUser'
 
 function CommentCard({ comment, onDelete }) {
     const { currentUser } = useContext(CurrentUser)
@@ -19,9 +21,7 @@ function CommentCard({ comment, onDelete }) {
                 <strong>- {comment.author.firstName} {comment.author.lastName}</strong>
             </h3>
             <h4>Rating: {comment.stars}</h4>
-            <button className="btn btn-danger" onClick={onDelete} >
-                Delete Comment
-            </button>
+            {deleteButton}
         </div>
     )
 }

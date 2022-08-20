@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(defineCurrentUser)
 
-
 // Controllers & Routes
 
 app.use(express.urlencoded({ extended: true }))

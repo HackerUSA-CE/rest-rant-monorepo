@@ -95,8 +95,8 @@ router.post('/:placeId/comments', async (req, res) => {
     }
 
     if (!req.currentUser) {
-        return res.status(404).json({
-            message: `You must be logged in to leave a rand or rave.`})
+        res.status(404).json({
+            message: `You must be logged in to leave a rave or rant`})
     }
 
     const comment = await Comment.create({
@@ -137,7 +137,6 @@ router.delete('/:placeId/comments/:commentId', async (req, res) => {
         }
     }
 })
-
 
 module.exports = router
 
