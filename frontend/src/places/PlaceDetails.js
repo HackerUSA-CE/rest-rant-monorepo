@@ -39,6 +39,10 @@ function PlaceDetails() {
       `http://localhost:3000/places/${place.placeId}/comments/${deletedComment.commentId}`,
       {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     )
 
@@ -56,6 +60,7 @@ function PlaceDetails() {
       {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(commentAttributes),
