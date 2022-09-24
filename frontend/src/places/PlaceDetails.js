@@ -16,7 +16,7 @@ function PlaceDetails() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5050/places/${placeId}`)
+			const response = await fetch(`${process.env.REACT_APP_SERVER_URL}places`)
 			const resData = await response.json()
 			setPlace(resData)
 		}
@@ -51,7 +51,7 @@ function PlaceDetails() {
 	}
 
 	async function createComment(commentAttributes) {
-		const response = await fetch(`http://localhost:5050/places/${place.placeId}/comments`, {
+		const response = await fetch(`${process.env.REACT_APP_SERVER_URL}places`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

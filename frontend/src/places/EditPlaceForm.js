@@ -17,7 +17,7 @@ function EditPlaceForm() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:5050/places/${placeId}`)
+			const response = await fetch(`${process.env.REACT_APP_SERVER_URL}places`)
 			const resData = await response.json()
 			setPlace(resData)
 		}
