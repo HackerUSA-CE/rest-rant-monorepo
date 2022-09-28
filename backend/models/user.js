@@ -20,14 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-    role: {
-      type: DataTypes.ENUM,
-      values: [
-        'reviewr',
-        'admin',
-      ],
-    },
-    passwordDigest: DataTypes.STRING
+    password_digest: DataTypes.STRING
   }, {
     sequelize,
     underscored: true,

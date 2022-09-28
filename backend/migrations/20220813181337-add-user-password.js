@@ -10,6 +10,6 @@ module.exports = {
     return queryInterface.removeColumn('users', 'password_digest')
   }
 };
-'use strict';
+// 'use strict';
 
 
