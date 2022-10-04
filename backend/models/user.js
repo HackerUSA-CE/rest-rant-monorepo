@@ -18,30 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       passwordDigest: DataTypes.STRING,
     },
-<<<<<<< HEAD
     {
       sequelize,
       underscored: true,
       modelName: "User",
     }
   );
-=======
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: {
-      type: DataTypes.ENUM,
-      values: [
-        'reviewer',
-        'admin',
-      ],
-    },
-    passwordDigest: DataTypes.STRING
-  }, {
-    sequelize,
-    underscored: true,
-    modelName: 'User',
-  });
->>>>>>> origin/9.3.12-solution-session
   return User;
 };
