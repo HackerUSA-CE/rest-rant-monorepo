@@ -55,7 +55,8 @@ function PlaceDetails() {
 		const response = await fetch(`http://localhost:5000/places/${place.placeId}/comments`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
 			},
 			body: JSON.stringify(commentAttributes)
 		})
@@ -105,6 +106,7 @@ function PlaceDetails() {
 		})
 	}
 
+<<<<<<< HEAD
 
 	let placeActions = null
 
@@ -121,6 +123,8 @@ function PlaceDetails() {
 		)
 	}
 
+=======
+>>>>>>> origin/9.3.10-solution-jwt
 	return (
 		<main>
 			<div className="row">

@@ -134,9 +134,15 @@ router.delete('/:placeId/comments/:commentId', async (req, res) => {
         })
         if (!comment) {
             res.status(404).json({ message: `Could not find comment with id "${commentId}" for place with id "${placeId}"` })
+<<<<<<< HEAD
         } else if (comment.authorId !== req.currentUser?.userId) {
             res.status(403).json({ message: `You do not have permission to delete comment "${comment.commentId}"` })
         } else {
+=======
+        } else if(comment.authorId !== req.currentUser?.userId){
+            res.status(403).json({ message: `You do not have permission to delete comment "${comment.commentId}"`})
+        }else {
+>>>>>>> origin/9.3.10-solution-jwt
             await comment.destroy()
             res.json(comment)
         }

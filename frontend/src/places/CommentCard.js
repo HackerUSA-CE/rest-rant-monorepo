@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { CurrentUser } from '../contexts/CurrentUser'
 
 function CommentCard({ comment, onDelete }) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/9.3.10-solution-jwt
     const { currentUser } = useContext(CurrentUser)
 
     let deleteButton = null;
@@ -13,6 +17,10 @@ function CommentCard({ comment, onDelete }) {
             </button>
         )
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/9.3.10-solution-jwt
     return (
         <div className="border col-sm-4">
             <h2 className="rant">{comment.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
