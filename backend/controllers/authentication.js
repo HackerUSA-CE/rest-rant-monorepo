@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 
     if (!user || !await bcrypt.compare(req.body.password, user.passwordDigest)) {
         res.status(404).json({ 
-            message: `Could not find a user with the provided username and password` 
+            message: `Are you a hacker or did you just forget your pass?` 
         })
     } else {
         res.json({ user })
