@@ -5,9 +5,9 @@ function EditPlaceForm() {
 
 	const history = useHistory()
 
-    const { placeId } = useParams()
+	const { placeId } = useParams()
 
-    const [place, setPlace] = useState({
+	const [place, setPlace] = useState({
 		name: '',
 		pic: '',
 		city: '',
@@ -22,7 +22,7 @@ function EditPlaceForm() {
 			setPlace(resData)
 		}
 		fetchData()
-	}, [ placeId ])
+	}, [placeId])
 
 	async function handleSubmit(e) {
 		e.preventDefault()
