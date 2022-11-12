@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { useHistory } from "react-router";
 import { CurrentUser } from './contexts/CurrentUser';
 
@@ -7,6 +7,11 @@ function Navigation() {
     const history = useHistory()
 
     const { currentUser } = useContext(CurrentUser)
+
+    function logOut() {
+        localStorage.removeItem("token");
+        history.go(0)
+    }
 
     let loginActions = (
         <>
@@ -25,9 +30,16 @@ function Navigation() {
 
     if (currentUser) {
         loginActions = (
+            <>
             <li style={{ float: 'right' }}>
                 Logged in as {currentUser.firstName} {currentUser.lastName}
             </li>
+            <li style={{ float: 'right' }}>
+                <a href="#" onClick={logOut}>
+                    Log Out
+                </a>
+            </li>
+        </>
         )
     }
 
