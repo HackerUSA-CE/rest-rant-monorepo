@@ -23,11 +23,23 @@ function Navigation() {
         </>
     )
 
+    const handleLogOut = () => {
+        localStorage.removeItem('token')
+        window.location.reload(false)
+    }
+
     if (currentUser) {
         loginActions = (
+            <>
             <li style={{ float: 'right' }}>
                 Logged in as {currentUser.firstName} {currentUser.lastName}
             </li>
+            <li style={{ float: 'right' }}>
+                <a href="#" onClick={handleLogOut}>
+                    Log Out
+                </a>
+            </li>
+            </>
         )
     }
 
