@@ -1,5 +1,6 @@
 
 function CommentCard({ comment, onDelete }) {
+    console.log(comment)
     return (
         <div className="border col-sm-4">
             <h2 className="rant">{comment.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
