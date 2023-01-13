@@ -95,37 +95,21 @@ router.post('/:placeId/comments', async (req, res) => {
         res.status(404).json({ message: `Could not find place with id "${placeId}"` })
     }
 
-    let currentUser
-    try {
-        const [method, token] = req.headers.authorization.split(' ')
-        if (method === 'Bearer') {
-            const result = await jwt.decode(process.env.JWT_SECRET, token)
-            const { id } = result.value
-            currentUser = await User.findOne({
-                where: { userId: id }
-            })
-        }
-    } catch {
-        currentUser = null
-    }
-
-    console.log(currentUser)
-
-    if (!currentUser) {
+    if (!req.currentUser) {
         return res.status(404).json({
-            message: 'You must be logged in to create a rant or a rave.'
+            message: 'You must be signed in to leave a rant or rave.'
         })
     }
 
     const comment = await Comment.create({
         ...req.body,
-        authorId: currentUser.userId,
+        authorId: req.currentUser.userId,
         placeId: placeId
     })
 
     res.send({
         ...comment.toJSON(),
-        author: currentUser
+        author: req.currentUser
     })
 })
 
