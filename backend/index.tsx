@@ -1,8 +1,8 @@
 // Modules and Globals
 require('dotenv').config()
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 const app = express();
 
 // Express Settings
