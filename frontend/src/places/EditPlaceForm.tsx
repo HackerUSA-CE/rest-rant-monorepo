@@ -5,7 +5,7 @@ function EditPlaceForm() {
 
 	const history = useHistory()
 
-    const { placeId } = useParams()
+    const { placeId }:any = useParams()
 
     const [place, setPlace] = useState({
 		name: '',

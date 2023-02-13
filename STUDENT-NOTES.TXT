@@ -1,0 +1,25 @@
+to get react elements to work had to use "npm i --save @types/<ReactElementName>"
+
+------------------------------------------------------------------------------------
+
+in frontend/tsconfig.json un-commented <"jsx": "perserve",> to allow jsx/tsx file types
+
+----------------------------------------------------------------------------------------------
+
+error ts(7031): Binding element '<ElementType>' implicitly has an 'any' type
+    corrected by typing element as ":any"
+
+-----------------------------------------------------------------------------------------------
+
+error ts(2554): Expected 1 argument, but got 0...An argument for "defaultValue' was not provided.
+Encounted this in file frontend/src/contexts/CurrentUser.tsx.  Original code:
+    
+    export const CurrentUser = createContext()
+
+    corrected by passing an empty object as the argument:
+
+    export const CurrentUser = createContext({})
+
+-----------------------------------------------------------------------------------------------
+
+error ts(2339): Property '<xyz>' does not exist on type '{}'

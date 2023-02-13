@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 
 
-export const CurrentUser = createContext()
+export const CurrentUser = createContext({})
 
-function CurrentUserProvider({ children }){
+function CurrentUserProvider({ children }: any){
 
     const [currentUser, setCurrentUser] = useState(null)
 
