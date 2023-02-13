@@ -22,4 +22,18 @@ Encounted this in file frontend/src/contexts/CurrentUser.tsx.  Original code:
 
 -----------------------------------------------------------------------------------------------
 
-error ts(2339): Property '<xyz>' does not exist on type '{}'
+error ts(2339): Property '<xyz>' does not exist on type '{}':
+Encounted this in file frontend/src/places/EditPlaceForm.tsx in many instaces where "place.placeID" is used:
+
+    await fetch(`http://localhost:5000/places/${place.placeId}`, {...
+			
+
+"fixed" this by removing the place "dot-notation":
+
+    await fetch(`http://localhost:5000/places/${placeId}`, {...
+
+that worked in this type of case.  I have many errors of this type.  This error occurs where there is 
+"dot-notation".  In the example above I could change "place.placeId" to just "placeId" because
+"place" was in scope of the function.
+
+

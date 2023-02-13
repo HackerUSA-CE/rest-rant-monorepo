@@ -27,7 +27,7 @@ function EditPlaceForm() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/places/${place.placeId}`, {
+		await fetch(`http://localhost:5000/places/${placeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ function EditPlaceForm() {
 			body: JSON.stringify(place)
 		})
 
-		history.push(`/places/${place.placeId}`)
+		history.push(`/places/${placeId}`)
 	}
 
 	return (
