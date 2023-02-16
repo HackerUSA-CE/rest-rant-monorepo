@@ -23,35 +23,36 @@ function Navigation() {
         </>
     )
 
-    if (currentUser) {
-        loginActions = (
-            <li style={{ float: 'right' }}>
-                Logged in as {currentUser.firstName} {currentUser.lastName}
-            </li>
-        )
-    }
+      
 
-    return (
-        <nav>
-            <ul>
-                <li>
-                    <a href="#" onClick={() => history.push("/")}>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={() => history.push("/places")}>
-                        Places
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={() => history.push("/places/new")}>
-                        Add Place
-                    </a>
-                </li>
-                {loginActions}
-            </ul>
-        </nav>
+if (currentUser) {
+    loginActions = (
+        <li style={{ float: 'right' }}>
+            Logged in as {currentUser.firstName} {currentUser.lastName}
+        </li>
+    )
+}
+
+let addPlaceButton = null
+
+if (currentUser?.role === 'admin') {
+    addPlaceButton = (
+        <li>
+            <a href="#" onClick={() => history.push("/places/new")}>
+                Add Place
+            </a>
+        </li>
+    )
+}
+
+return (
+    <nav>
+          
+            {addPlaceButton}
+            {loginActions}
+        
+    </nav>
+
     )
 }
 
