@@ -5,11 +5,11 @@ import NewCommentForm from "./NewCommentForm";
 
 function PlaceDetails() {
 
-	const { placeId } = useParams()
+	const { placeId }:any = useParams()
 
 	const history = useHistory()
 
-	const [place, setPlace] = useState(null)
+	const [place, setPlace] = useState(null as any)
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -25,18 +25,18 @@ function PlaceDetails() {
 	}
 
 	function editPlace() {
-		history.push(`/places/${place.placeId}/edit`)
+		history.push(`/places/${placeId}/edit`)
 	}
 
 	async function deletePlace() {
-		await fetch(`http://localhost:5000/places/${place.placeId}`, {
+		await fetch(`http://localhost:5000/places/${placeId}`, {
 			method: 'DELETE'
 		})
 		history.push('/places')
 	}
 
-	async function deleteComment(deletedComment) {
-		await fetch(`http://localhost:5000/places/${place.placeId}/comments/${deletedComment.commentId}`, {
+	async function deleteComment(deletedComment: any) {
+		await fetch(`http://localhost:5000/places/${placeId}/comments/${deletedComment.commentId}`, {
 			method: 'DELETE'
 		})
 
@@ -47,7 +47,7 @@ function PlaceDetails() {
 		})
 	}
 
-	async function createComment(commentAttributes) {
+	async function createComment(commentAttributes:any) {
 		const response = await fetch(`http://localhost:5000/places/${place.placeId}/comments`, {
 			method: 'POST',
 			headers: {

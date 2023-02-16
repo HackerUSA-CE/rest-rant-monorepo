@@ -24,7 +24,7 @@ function EditPlaceForm() {
 		fetchData()
 	}, [ placeId ])
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e: any) {
 		e.preventDefault()
 
 		await fetch(`http://localhost:5000/places/${placeId}`, {

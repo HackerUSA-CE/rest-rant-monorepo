@@ -12,7 +12,7 @@ function SignUpForm() {
 		password: ''
 	})
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e: any) {
 		e.preventDefault()
 
 		await fetch(`http://localhost:5000/users/`, {

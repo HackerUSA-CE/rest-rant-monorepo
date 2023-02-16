@@ -36,4 +36,32 @@ that worked in this type of case.  I have many errors of this type.  This error 
 "dot-notation".  In the example above I could change "place.placeId" to just "placeId" because
 "place" was in scope of the function.
 
+-----------------------------------------------------------------------------------------------
 
+error ts(7006): Parameter 'e' implicitly has an 'any' type
+file: frontend/src/users/SignUpForm.tsx
+Line 13, Col 30
+
+"fixed" by specifying "e" as "e: any"
+
+------------------------------------------------------------------------------------------------
+
+error ts(2339): Property 'placeId' does not exist on type 'never"
+file: frontend/src/places/PlaceIndex.tsx
+Lines 21, 23, 24, 28, 30, 32
+
+"fixed" by changing line 8.  
+    original: const [places, setPlaces] = useState([])
+    changed: const [places, setPlaces] = useState([] as any[])
+
+learned from stack overflow: https://stackoverflow.com/questions/61495714/typescript-property-title-does-not-exist-on-type-never    
+
+----------------------------------------------------------------------------------------------------------
+error ts(2698): Spread types may only be creatted from object types.
+error ts(18047): 'place' is possibly 'null'
+error ts(2339): Property 'comments' does not exist on type 'never'
+Lines 44, 45, 51, 62, 64, 83, 84, 87, 97, 109, 111, 115, 125, 128
+
+"fixed" by changing line 12
+    original: const [place, setPlace] = useState(null)
+    changed: const [place, setPlace] = useState(null as any)

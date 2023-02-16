@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-function PlaceIndex(data) {
+function PlaceIndex(data:any) {
 
 	const history = useHistory()
 	
-	const [places, setPlaces] = useState([])
+	const [places, setPlaces] = useState([] as any[])
 
 	useEffect(() => {
 		const fetchData = async () => {

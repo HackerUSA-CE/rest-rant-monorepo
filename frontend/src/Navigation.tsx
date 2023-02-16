@@ -6,7 +6,7 @@ function Navigation() {
 
     const history = useHistory()
 
-    const { currentUser } = useContext(CurrentUser)
+    const { currentUser }:any = useContext(CurrentUser)
 
     let loginActions = (
         <>
