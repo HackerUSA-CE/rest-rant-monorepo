@@ -26,6 +26,7 @@ function LoginForm() {
         })
 
         const data = await response.json()
+        // console.log(data)
 
         if (response.status === 200) {
             setCurrentUser(data.user)
