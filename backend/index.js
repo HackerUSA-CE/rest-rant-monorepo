@@ -6,6 +6,7 @@ const cors = require('cors')
 const app = express();
 const cookieSession = require('cookie-session')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
+const path = require('path')
 
 // Express Settings
 app.use(cookieSession({
@@ -21,14 +22,25 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(defineCurrentUser)
+app.use(express.static("public"))
+
+
+// serve static front end in production mode - AWS activity
+// path.join() method joins the specified path segments into one path: client\build
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, 'public', 'build')));
+}
 
 // Controllers & Routes
 
-app.use(express.urlencoded({ extended: true }))
+// app.use(express.urlencoded({ extended: true }))
 
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
+
+
+
 
 // Listen for Connections
 app.listen(process.env.PORT, () => {

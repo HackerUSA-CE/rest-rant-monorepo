@@ -1,6 +1,9 @@
+
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
+
+
 
 const { User } = db
 
@@ -14,7 +17,7 @@ router.post('/', async (req, res) => {
         })
     } else {
         req.session.userId = user.userId
-        console.log(req.session.userId)
+        // console.log(user)
         res.json({ user })
     }
 })
@@ -22,11 +25,13 @@ router.post('/', async (req, res) => {
 
   
 router.get('/profile', async (req, res) => {
-    res.json(req.currentUser)
-})
+    
+    
+  res.json(req.userId)
+       
+ })
 
-
-// router.get('/profile', async (req, res) => {
+ // router.get('/profile', async (req, res) => {
 //     console.log(req.session.userId)
 //      try {
 //         let user = await User.findOne({

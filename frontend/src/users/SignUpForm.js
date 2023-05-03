@@ -15,7 +15,7 @@ function SignUpForm() {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:5000/users/`, {
+		await fetch(`${process.env.REACT_APP_SERVER_URL}users/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

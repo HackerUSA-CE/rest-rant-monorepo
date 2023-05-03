@@ -16,8 +16,8 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState(null)
 
     async function handleSubmit(e) {
-        // e.preventDefault()
-        const response = await fetch(`http://localhost:5000/authentication/`, {
+        e.preventDefault()
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}authentication/`, {
             method: 'POST',
             credentials: "include",
             headers: {
@@ -27,7 +27,7 @@ function LoginForm() {
         })
 
         const data = await response.json()
-        // console.log(data)
+        console.log(data)
 
         if (response.status === 200) {
             setCurrentUser(data.user)
@@ -83,6 +83,7 @@ function LoginForm() {
 }
 
 export default LoginForm
+
 
 
 

@@ -10,6 +10,7 @@ async function defineCurrentUser(req, res, next) {
             }
         })
         req.currentUser = user
+        // console.log(user)
         next()
     } catch {
         next()

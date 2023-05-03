@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
   "development": {
     "username": "postgres",
-    "password": "Get-SQL@13021!",
+    "password": "boilerplate",
     "database": "rest_rant_auth",
     "host": "127.0.0.1",
     "dialect": "postgres"
@@ -17,7 +17,7 @@ module.exports = {
   },
   "production": {
     "username": "postgres",
-    "password": "Get-SQL@13021!",
+    "password": "boilerplate",
     "database": "rest_rant_auth",
     "host": "127.0.0.1",
     "dialect": "postgres"
