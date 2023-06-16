@@ -6,7 +6,7 @@ First, you'll need a Postgres database to connect to. Follow instructions here t
 
 Next create a `.env` file inside of `backend`. It will need to contain the following environment variables (change the values for the database to match what you defined in the previous step)
 ```
-PORT=5000
+PORT=5001
 DB_USERNAME=rest_rant_user
 DB_PASSWORD=password
 DB_DATABASE=rest_rant
