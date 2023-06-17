@@ -1,12 +1,10 @@
-import { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router";
 import { CurrentUser } from './contexts/CurrentUser';
 
 function Navigation() {
-
-    const history = useHistory()
-
-    const { currentUser } = useContext(CurrentUser)
+    const history = useHistory();
+    const { currentUser } = useContext(CurrentUser);
 
     let loginActions = (
         <>
@@ -21,14 +19,14 @@ function Navigation() {
                 </a>
             </li>
         </>
-    )
+    );
 
     if (currentUser) {
         loginActions = (
             <li style={{ float: 'right' }}>
                 Logged in as {currentUser.firstName} {currentUser.lastName}
             </li>
-        )
+        );
     }
 
     return (
@@ -52,7 +50,7 @@ function Navigation() {
                 {loginActions}
             </ul>
         </nav>
-    )
+    );
 }
 
 export default Navigation;
