@@ -1,29 +1,43 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('./database'); // Update the path to the database.js file
 
-    static associate({ Comment }) {
-      User.hasMany(Comment, { as: 'author', foreignKey: 'author_id' })
-    }
+class User extends Model {
+  static associate(models) {
+    User.hasMany(models.Comment, { as: 'author', foreignKey: 'authorId' });
+  }
+}
 
-  };
-  User.init({
+User.init(
+  {
     userId: {
       type: DataTypes.SMALLINT,
       primaryKey: true,
-      autoIncrement: true
-
+      autoIncrement: true,
     },
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING
-  }, {
-    sequelize,
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    passwordDigest: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      field: 'password_digest',
+    },
+  },
+  {
+    sequelize, // Pass the Sequelize instance here
     underscored: true,
     modelName: 'User',
-  });
-  return User;
-};
+  }
+);
+
+module.exports = User;

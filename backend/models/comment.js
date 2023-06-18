@@ -1,32 +1,32 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Comment extends Model {
-  
-    static associate({ User, Place }) {
-      Comment.belongsTo(Place, { as: 'place', foreignKey: 'place_id' })
-      Comment.belongsTo(User, { as: 'author', foreignKey: 'author_id' })
-    }
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('./database'); // Update the path to the database.js file
 
-  };
-  Comment.init({
+class Comment extends Model {
+  static associate(models) {
+    Comment.belongsTo(models.Place, { as: 'place', foreignKey: 'placeId' });
+    Comment.belongsTo(models.User, { as: 'author', foreignKey: 'authorId' });
+  }
+}
+
+Comment.init(
+  {
     commentId: {
-      type:  DataTypes.SMALLINT,
+      type: DataTypes.SMALLINT,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     placeId: DataTypes.SMALLINT,
     authorId: DataTypes.SMALLINT,
     content: DataTypes.STRING,
     stars: DataTypes.FLOAT,
-    rant: DataTypes.BOOLEAN
-  }, {
-    sequelize,
+    rant: DataTypes.BOOLEAN,
+  },
+  {
+    sequelize, // Pass the Sequelize instance here
     underscored: true,
     modelName: 'Comment',
-  });
-  return Comment;
+  }
+);
 
-};
+module.exports = Comment;
