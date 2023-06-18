@@ -24,8 +24,14 @@ function NewPlaceForm() {
 			body: JSON.stringify(place)
 		})
 
-		history.push('/places')
 	}
+
+	const { currentUser } = useContext(CurrentUser)
+	
+	if(!currentUser){
+		return <p>You must be logged in to leave a rant or rave.</p>
+	}
+	
 
 	return (
 		<main>
