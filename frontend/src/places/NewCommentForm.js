@@ -3,7 +3,7 @@ import { CurrentUser, currenUser } from "../contexts/CurrentUser"
 
 function NewCommentForm({ place, onSubmit }) {
 
-    const {currentUser} = useContext(CurrentUser)
+   
 
     const [comment, setComment] = useState({
         content: '',
@@ -22,6 +22,7 @@ function NewCommentForm({ place, onSubmit }) {
         authorId: authors[0]?.userId
     })
 }
+const { currentUser } = useContext(CurrentUser)
 
 if(!currentUser){
     return <p>You must be logged in to leave a rant or rave.</p>

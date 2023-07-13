@@ -81,6 +81,8 @@ router.delete('/:placeId', async (req, res) => {
     }
 })
 
+  
+
 router.post('/:placeId/comments', async (req, res) => {
     const placeId = Number(req.params.placeId)
 
@@ -109,6 +111,8 @@ router.post('/:placeId/comments', async (req, res) => {
         author: req.currentUser
     })
 })
+
+
 
 router.delete('/:placeId/comments/:commentId', async (req, res) => {
     let placeId = Number(req.params.placeId)
