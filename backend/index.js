@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5432;
 
 // Express Settings
 app.use(cors())
@@ -13,13 +13,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Controllers & Routes
-
-app.use(express.urlencoded({ extended: true }))
-
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
+app.use('/authentication', require('./controllers/authentication'))
 
-// Listen for Connections
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`)
-})
+}) 
