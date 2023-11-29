@@ -16,4 +16,3 @@ function CurrentUserProvider({ children }) {
         }
         getLoggedInUser()
     }, [])
-  
