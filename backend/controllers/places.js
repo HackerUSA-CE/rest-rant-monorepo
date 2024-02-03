@@ -45,6 +45,9 @@ router.get('/:placeId', async (req, res) => {
 })
 
 router.put('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
     let placeId = Number(req.params.placeId)
     if (isNaN(placeId)) {
         res.status(404).json({ message: `Invalid id "${placeId}"` })
@@ -63,6 +66,9 @@ router.put('/:placeId', async (req, res) => {
 })
 
 router.delete('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
     let placeId = Number(req.params.placeId)
     if (isNaN(placeId)) {
         res.status(404).json({ message: `Invalid id "${placeId}"` })
@@ -82,10 +88,12 @@ router.delete('/:placeId', async (req, res) => {
 })
 
 router.post('/:placeId/comments', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
+
     const placeId = Number(req.params.placeId)
-
     req.body.rant = req.body.rant ? true : false
-
     const place = await Place.findOne({
         where: { placeId: placeId }
     })
@@ -94,22 +102,32 @@ router.post('/:placeId/comments', async (req, res) => {
         res.status(404).json({ message: `Could not find place with id "${placeId}"` })
     }
 
-    const author = await User.findOne({
-        where: { userId: req.body.authorId }
-    })
+    let currentUser;
+    try {
+        currentUser = await User.findOne({
+            where: {
+                userId: req.session.userId
+            }
+        })
+    } catch {
+        currentUser = null;
+    }
 
-    if (!author) {
-        res.status(404).json({ message: `Could not find author with id "${req.body.authorId}"` })
+    if (!currentUser){
+        return res.status(404).json({
+            message: `You must be logged in to pen messages.`
+        })
     }
 
     const comment = await Comment.create({
         ...req.body,
+        authorId: currentUser.userId,
         placeId: placeId
     })
 
     res.send({
         ...comment.toJSON(),
-        author
+        author: currentUser
     })
 })
 
