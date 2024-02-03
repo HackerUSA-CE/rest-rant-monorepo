@@ -45,6 +45,9 @@ router.get('/:placeId', async (req, res) => {
 })
 
 router.put('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
     let placeId = Number(req.params.placeId)
     if (isNaN(placeId)) {
         res.status(404).json({ message: `Invalid id "${placeId}"` })
@@ -63,6 +66,9 @@ router.put('/:placeId', async (req, res) => {
 })
 
 router.delete('/:placeId', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
     let placeId = Number(req.params.placeId)
     if (isNaN(placeId)) {
         res.status(404).json({ message: `Invalid id "${placeId}"` })
@@ -82,10 +88,12 @@ router.delete('/:placeId', async (req, res) => {
 })
 
 router.post('/:placeId/comments', async (req, res) => {
+    if(req.currentUser?.role !== 'admin') {
+        return res.status(403).json({message: 'You are not permitted to add a place.'})
+    }
+
     const placeId = Number(req.params.placeId)
-
     req.body.rant = req.body.rant ? true : false
-
     const place = await Place.findOne({
         where: { placeId: placeId }
     })
