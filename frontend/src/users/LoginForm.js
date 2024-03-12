@@ -3,19 +3,20 @@ import { useHistory } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser"
 
 
+__
 async function handleSubmit(e) {
-    e.preventDefault();
+    const response = await fetch(`http://localhost:5000/authentication/`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
 
-    try {
-        const response = await fetch(`http://localhost:5000/authentication/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
-        });
+    const data = await response.json()
+  
 
-        const data = await response.json();
 
     
         if (response.ok) {  
@@ -29,8 +30,8 @@ async function handleSubmit(e) {
         console.error('An error occurred:', error);
         setErrorMessage('An error occurred, please try again');
     }
-}
- 
+
+
 
     
     return (
