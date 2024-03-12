@@ -2,25 +2,38 @@ import { useContext, useState } from "react"
 import { useHistory } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser"
 
-function LoginForm() {
 
-    const history = useHistory()
-
-    const { setCurrentUser } = useContext(CurrentUser)
-
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: ''
+__
+async function handleSubmit(e) {
+    const response = await fetch(`http://localhost:5000/authentication/`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
     })
 
-    const [errorMessage, setErrorMessage] = useState(null)
+    const data = await response.json()
+  
 
-    async function handleSubmit(e) {
-        e.preventDefault()
-       
 
+    
+        if (response.ok) {  
+            setCurrentUser(data.user);
+            localStorage.setItem('token', data.token);
+            history.push(`/`);
+        } else {
+            setErrorMessage(data.message);
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+        setErrorMessage('An error occurred, please try again');
     }
 
+
+
+    
     return (
         <main>
             <h1>Login</h1>
@@ -63,6 +76,6 @@ function LoginForm() {
             </form>
         </main>
     )
-}
+
 
 export default LoginForm
